@@ -13,12 +13,14 @@ jobs:
       - run: npm run lint
       - name: run tests
         run: npm test
-  code-security:
-   runs-on: ubuntu-latest
-   steps:
-    - name: Run Snyk to check for vulnerabilities
-    - uses: actions/setup-node@v4
-    - uses: actions/checkout@master
-    - uses: snyk/actions/maven@master
-      env:
-        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
