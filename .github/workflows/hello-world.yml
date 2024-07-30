@@ -3,6 +3,7 @@ name: hello-world
 on: push
 jobs:
   build:
+    needs: nodejs_caching
     # операционная система для работы воркфлоу
     runs-on: ubuntu-latest
     steps: # список шагов, которые надо выполнить
@@ -14,6 +15,7 @@ jobs:
       - name: run tests
         run: npm test
   security:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
