@@ -7,8 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps: # список шагов, которые надо выполнить
       # checkout — клонирует репозиторий
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
       - run: npm install
       - run: npm run lint
       - name: run tests
@@ -19,7 +19,9 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         # Configures the node version used on GitHub-hosted runners
         # https://github.com/actions/setup-node
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
+      - uses: actions/cache@v3
         with:
           node-version: '16'
           check-latest: true
